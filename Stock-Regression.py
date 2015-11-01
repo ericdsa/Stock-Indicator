@@ -30,8 +30,8 @@ plt.show()
 
 # Prints suggestions for future
 trending_up = model.coef_ > 0
-print("Linear Regression says: ")
+print("Linear Regression says that: ")
 if(trending_up):
-    print("\tStock going upwards - buy now!")
+    print("\tStock is going upwards - buy now!")
 else:
-    print("\tStock going down - sell now!")
+    print("\tStock is going down - sell now!")
