@@ -16,15 +16,23 @@ model = linear_model.LinearRegression()
 model.fit(days, stock_data['Close'])
 
 # Moving Averages
-moving_average_50 = pd.rolling_mean(stock_data['Close'], 50)
-moving_average_100 = pd.rolling_mean(stock_data['Close'], 100)
+moving_average_26 = pd.ewma(stock_data['Close'], span = 26)
+moving_average_12 = pd.ewma(stock_data['Close'], span = 12)
+MACD = moving_average_12 - moving_average_26
+signal_line = pd.ewma(MACD, span = 9)
 
-# Plots all values
+# Plots main graph
 plt.scatter(days, stock_data['Close'], color = 'black')
 plt.plot(days, model.predict(days), color = 'blue')
-plt.plot(days, moving_average_50, color = 'green')
-plt.plot(days, moving_average_100, color = 'red')
+plt.plot(days, moving_average_12, color = 'green')
+plt.plot(days, moving_average_26, color = 'red')
 plt.plot(days_ahead, model.predict(days_ahead), color = 'orange')
+
+plt.show()
+
+# plot MACD in separate graph
+plt.plot(days, MACD)
+plt.plot(days, signal_line)
 
 plt.show()
 
