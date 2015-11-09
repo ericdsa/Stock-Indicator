@@ -35,7 +35,8 @@ def main():
     print_suggestions(trending_short, trending_long)
 
 def gather_data():
-    stock_data = Quandl.get("GOOG/NYSE_PEP", trim_start = "2014-01-01", trim_end = "2014-12-31", authtoken = "fcG4eM3axadY2vy5xkHr")
+    # Quandl authtoken not shown
+    stock_data = Quandl.get("GOOG/NYSE_PEP", trim_start = "2014-01-01", trim_end = "2014-12-31", authtoken = "")
     days = (stock_data.index - stock_data.index[0]).days.reshape(-1, 1)
     return stock_data, days
 
