@@ -46,7 +46,7 @@ def main():
 
 def gather_data(symbol):
     symbol_tag = "WIKI/" + symbol
-    stock_data = Quandl.get(symbol_tag, trim_start = "2014-01-01", trim_end = "2014-12-31", authtoken = "fcG4eM3axadY2vy5xkHr")
+    stock_data = Quandl.get(symbol_tag, trim_start = "2014-01-01", trim_end = "2014-12-31", authtoken = "")
     days = (stock_data.index - stock_data.index[0]).days.reshape(-1, 1)
     return stock_data, days
 
